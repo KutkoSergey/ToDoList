@@ -2,7 +2,7 @@
 
 require_once 'app/init.php';
 
-$itemsQuery = $db->prepare("SELECT id, name, done FROM items WHERE user = :user");
+$itemsQuery = $db->prepare("SELECT id, name, done, Color FROM items WHERE user = :user");
 $itemsQuery->execute(['user' => $_SESSION['user_id']]);
 $items = $itemsQuery->rowCount() ? $itemsQuery : [];
 /*foreach ($items as $item) {
@@ -30,8 +30,9 @@ $items = $itemsQuery->rowCount() ? $itemsQuery : [];
                 <?php foreach ($items as $item ): ?>
                     <li>
                         <form class = "item-del"  method = "post">
+                            <?php $color = $item['Color']; ?>
                             <input type="hidden" name="id" value="<?php echo htmlentities($item['id']); ?>"/>
-                            <input type="text" name="Name" value="<?php echo htmlentities($item['name']); ?>"     />
+                            <input type="text"   STYLE=background-color:<?php echo htmlentities($item['Color']); ?>  name="Name" value="<?php echo htmlentities($item['name']); ?>"     />
 
 
                             <?php if($item['done']): ?>
@@ -43,14 +44,14 @@ $items = $itemsQuery->rowCount() ? $itemsQuery : [];
                             <?php endif; ?>
                             <input type = "submit" value = "delete" class = "submit" formaction="delete.php" >
                             <input type = "submit" value = "edit" class = "submit" formaction="edit.php" >
-                            
+                            <select name="Color">
+                                <option value="red">red</option>
+                                <option value="green">green</option>
+                                <option value="blue">blue</option>
+                                <option value="yellow">yellow</option>
+                            </select>
+                            <input type = "submit" value = "changeColor" class = "submit" formaction="changeColor.php" >
                         </form>
-
-                        <?php if(!$item['done']): ?>
-                        <a href = "mark.php?as=done&item=<?php echo $item ['id']; ?>" class = "done-button">Mark as done</a>
-
-                        <?php endif; ?>
-
                     </li>
                 <?php endforeach; ?>
             </ul>
