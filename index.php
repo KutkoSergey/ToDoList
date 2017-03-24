@@ -2,7 +2,7 @@
 
 require_once 'app/init.php';
 
-$itemsQuery = $db->prepare("SELECT id, name, done, Color FROM items WHERE user = :user");
+$itemsQuery = $db->prepare("SELECT id, name, done, Color, priority FROM items WHERE user = :user");
 $itemsQuery->execute(['user' => $_SESSION['user_id']]);
 $items = $itemsQuery->rowCount() ? $itemsQuery : [];
 /*foreach ($items as $item) {
@@ -32,7 +32,16 @@ $items = $itemsQuery->rowCount() ? $itemsQuery : [];
                         <form class = "item-del"  method = "post">
                             <?php $color = $item['Color']; ?>
                             <input type="hidden" name="id" value="<?php echo htmlentities($item['id']); ?>"/>
-                            <input type="text"   STYLE=background-color:<?php echo htmlentities($item['Color']); ?>  name="Name" value="<?php echo htmlentities($item['name']); ?>"     />
+                           /* <?php //$fontSize =
+                                if($item['priority'] == false){
+                                    $fontSize = '16px';
+                                }
+                                else{
+                                    $k = strval(20 + 20*(1/($item['priority'])));
+                                    $fontSize = $k."px";
+                                }
+                                ?>*/
+                            <input type="text"   style="background-color:<?php echo htmlentities($item['Color']); ?> ; font-size: <?php echo htmlentities($fontSize); ?>; " name="Name" value="<?php echo htmlentities($item['name']); ?>"     />
 
 
                             <?php if($item['done']): ?>
@@ -50,7 +59,18 @@ $items = $itemsQuery->rowCount() ? $itemsQuery : [];
                                 <option value="blue">blue</option>
                                 <option value="yellow">yellow</option>
                             </select>
-                            <input type = "submit" value = "changeColor" class = "submit" formaction="changeColor.php" >
+                            <input type = "submit" value = "change Color" class = "submit" formaction="changeColor.php" >
+                            <label>Priority is <?php echo htmlentities($item['priority']); ?> </label>
+                            <select name="priority">
+                                <?php
+                                for($i=1; $i<$items->rowCount()+1;$i++){
+                                    ?>
+                                <option value="<?php echo htmlentities($i); ?>"><?php echo htmlentities($i); ?></option>
+                                <?php
+                                }
+                                ?>
+                            </select>
+                            <input type = "submit" value = "change Priority" class = "submit" formaction="changePriority.php" >
                         </form>
                     </li>
                 <?php endforeach; ?>
