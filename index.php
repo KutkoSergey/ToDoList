@@ -17,9 +17,7 @@ $items = $itemsQuery->rowCount() ? $itemsQuery : [];
 <html>
     <head>
         <title>To Do List</title>
-        <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">﻿
-        <link href="http://fonts.googleapis.com/css?family=Open+Sans|Shadows+Into+Light+Two" rel="stylesheet">﻿
-        <link rel = "stylesheet" href="css/main.css">
+
 
         <meta name = "viewport" content = "width = device-width, user-scalable=no, initial-scale=1.0, maximum-scale = 1.0, minimum-scale = 1.0">
 
@@ -31,12 +29,23 @@ $items = $itemsQuery->rowCount() ? $itemsQuery : [];
             <ul class = "items">
                 <?php foreach ($items as $item ): ?>
                     <li>
-                        <span class = "item<?php echo  $item['done'] ? ' done' : '' ?>" name = "name"><?php echo $item['name'] ?>"</span>
-                        <form class = "item-del" action="delete.php" method = "post">
-                            <textarea rows = "10" cols = "45" >$items['name']</textarea>
-                            <input type = "submit" value = "Delete" class = "submit">
+                        <form class = "item-del"  method = "post">
+                            <input type="hidden" name="id" value="<?php echo htmlentities($item['id']); ?>"/>
+                            <input type="text" name="Name" value="<?php echo htmlentities($item['name']); ?>"     />
 
+
+                            <?php if($item['done']): ?>
+                                <input type="checkbox" name = "checkBox" checked="checked" >
+                            <?php endif; ?>
+
+                            <?php if(!$item['done']): ?>
+                                <input type="checkbox" name = "checkBox" >
+                            <?php endif; ?>
+                            <input type = "submit" value = "delete" class = "submit" formaction="delete.php" >
+                            <input type = "submit" value = "edit" class = "submit" formaction="edit.php" >
+                            
                         </form>
+
                         <?php if(!$item['done']): ?>
                         <a href = "mark.php?as=done&item=<?php echo $item ['id']; ?>" class = "done-button">Mark as done</a>
 

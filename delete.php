@@ -7,17 +7,27 @@
  */
 
 require_once  'app/init.php';
-
-/*if(isset($_POST['name'])) {
-    $name = trim($_POST['name']);
-
-    if(!empty($name)) {
-        $addedQuery = $db->prepare("INSERT INTO items (name, user, done ) VALUES (:name, :user, 0)");
-        $addedQuery->execute(['name' => $name, 'user' => $_SESSION['user_id']]);
-
-    }
-}*/
-
-//header ('Location: index.php');
 print_r($_POST);
-?>
+echo "delete";
+//if(!isset($_POST['  name'])) {
+    //$name = trim($_POST['name']);
+
+   // if(empty($name)) {
+      //  $db->exec("DELETE FROM users");
+
+    //}
+  /*  print_r($_POST);
+}*/
+  $id = $_POST['id'];
+
+      echo "delete";
+
+      $addedQuery = $db->prepare("DELETE FROM items Where id = $id");
+      $addedQuery->execute();
+
+
+
+
+
+header ('Location: index.php');
+
