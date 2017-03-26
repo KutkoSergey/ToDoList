@@ -1,73 +1,18 @@
-body{
-    background-color:#eceff0;
+.todoItem {
+    width: 300px; /* Ширина поля с кнопкой */
+    border: 1px solid #000; /* Параметры рамки */
+    min-height: 20px; /* Минимальная высота */
 }
-
-body, input{
-    font : 1em "Open Sans", sans-serif;
-    colotr:#363639;
+input[type="search"] {
+    border: none; /* Убираем рамку */
+    outline: none; /* Убираем свечение в Chrome и Safari */
+    -webkit-appearance: none; /* Убираем рамку в Chrome и Safari */
+    width: 274px; /* Ширина поля */
+    vertical-align: middle; /* Выравнивание по середине */
 }
-
-a {
-    text-decoration:none;
-    border-bottom: 1px dashed #363639;
-
-}
-
-.list {
-    background-color:#fff;
-    margin: 20px auto;
-    width: 100%;
-    maxx-width:500px;
-    padding: 20px;
-    border-radius: 2px;
-    box-shadow:3px 3px 0 rgba(0, 0, 0, .1);
-    box-sizing: border-box;
-}
-.list .header {
-    font-family: "Shadows Into Light Two", cursive;
-    margin: 0 0 10px 0;
-}
-
-.items {
-    margin:0;
-    paddinh:0;
-    list-style-type: none;
-}
-
-.items li:hover .done-button {
-    opacity: 1;
-}
-
-.items .item.done {
-    text-decoration: line-through;
-}
-
-.items li, .item-add .input{
-    border:0;
-    border-bottom: 1px dashed #ccc;
-    padding :15px 0;
-}
-
-.input:focus {
-    outline: none;
-}
-
-.input {
-    width:100%;
-}
-.items .done-button {
-    display:inline-block;
-    font-size: 0.8em;
-    background-color:#d9dfe1;
-    color:#363639;
-    padding: 3px 6px;
-    boder:0;
-}
-
-.submit {
-    background-color:$fff;
-    padding: 5px 10px;
-    border:1px solid #ddd;
-    width: 100%;
-    margin-top: 10px;
+input[type="submit"] {
+    width: 20px; /* Ширина кнопки */
+    height: 20px; /* Высота кнопки */
+    border: none; /* Убираем рамку */
+    background-color: red   ; /* Параметры фона */
 }

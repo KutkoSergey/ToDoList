@@ -12,36 +12,27 @@ $items = $itemsQuery->rowCount() ? $itemsQuery : [];
 ?>
 
 
-
 <!DOCTYPE html>
 <html>
     <head>
-        <title>To Do List</title>
 
-
-        <meta name = "viewport" content = "width = device-width, user-scalable=no, initial-scale=1.0, maximum-scale = 1.0, minimum-scale = 1.0">
-
+        <link rel = "stylesheet" type = "text/css" href = "css/main.css"   />
     </head>
     <body>
-        <div class = "list">
-            <h1 class = "header">To do.</h1>
-            <?php if(!empty($items)): ?>
+    <div class = "list">
+        <h1 class = "header">To do.</h1>
+        <?php if(!empty($items)): ?>
             <ul class = "items">
                 <?php foreach ($items as $item ): ?>
                     <li>
                         <form class = "item-del"  method = "post">
-                            <?php $color = $item['Color']; ?>
+
                             <input type="hidden" name="id" value="<?php echo htmlentities($item['id']); ?>"/>
-                           /* <?php //$fontSize =
-                                if($item['priority'] == false){
-                                    $fontSize = '16px';
-                                }
-                                else{
-                                    $k = strval(20 + 20*(1/($item['priority'])));
-                                    $fontSize = $k."px";
-                                }
-                                ?>*/
-                            <input type="text"   style="background-color:<?php echo htmlentities($item['Color']); ?> ; font-size: <?php echo htmlentities($fontSize); ?>; " name="Name" value="<?php echo htmlentities($item['name']); ?>"     />
+
+                            <div class="todoItem">
+                                <input type="search" name="Name" value="<?php echo htmlentities($item['name']); ?>">
+                                <input type="submit" value="delete"  class = "submit" formaction="delete.php" >
+                            </div>
 
 
                             <?php if($item['done']): ?>
@@ -51,7 +42,7 @@ $items = $itemsQuery->rowCount() ? $itemsQuery : [];
                             <?php if(!$item['done']): ?>
                                 <input type="checkbox" name = "checkBox" >
                             <?php endif; ?>
-                            <input type = "submit" value = "delete" class = "submit" formaction="delete.php" >
+
                             <input type = "submit" value = "edit" class = "submit" formaction="edit.php" >
                             <select name="Color">
                                 <option value="red">red</option>
@@ -65,8 +56,8 @@ $items = $itemsQuery->rowCount() ? $itemsQuery : [];
                                 <?php
                                 for($i=1; $i<$items->rowCount()+1;$i++){
                                     ?>
-                                <option value="<?php echo htmlentities($i); ?>"><?php echo htmlentities($i); ?></option>
-                                <?php
+                                    <option value="<?php echo htmlentities($i); ?>"><?php echo htmlentities($i); ?></option>
+                                    <?php
                                 }
                                 ?>
                             </select>
@@ -75,14 +66,15 @@ $items = $itemsQuery->rowCount() ? $itemsQuery : [];
                     </li>
                 <?php endforeach; ?>
             </ul>
-            <?php else: ?>
-                <p>You haven't added any items yet</p>
+        <?php else: ?>
+            <p>You haven't added any items yet</p>
 
-            <?php endif; ?>
-            <form class = "item-add" action="add.php" method = "post">
-                <input type = "text" name = "name" placeholder="Type a new item here." class = "input" autocomplete = "off" requered>
-                <input type = "submit" value = "Add" class = "submit">
-            </form>
-        </div>
+        <?php endif; ?>
+        <form class = "item-add" action="add.php" method = "post">
+            <input type = "text" name = "name" placeholder="Type a new item here." class = "input" autocomplete = "off" requered>
+            <input type = "submit" value = "Add" class = "submit">
+        </form>
+    </div>
     </body>
+    <head/>
 </html>
