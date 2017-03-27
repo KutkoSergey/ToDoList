@@ -24,19 +24,23 @@ $items = $itemsQuery->rowCount() ? $itemsQuery : [];
         <?php if(!empty($items)): ?>
             <ul class = "items">
                 <?php foreach ($items as $item ): ?>
-                    <li>
+                    <li type="1">
                         <form class = "item-del"  method = "post">
 
                             <input type="hidden" name="id" value="<?php echo htmlentities($item['id']); ?>"/>
 
-                            <div class="todoItem">
-                                <input type="search" name="Name" value="<?php echo htmlentities($item['name']); ?>">
-                                <input type="submit" value="delete"  class = "submit" formaction="delete.php" >
+                            <div class="todoItem" STYLE=background-color:<?php echo htmlentities($item['Color']); ?>>
+                                <textarea name="Name" STYLE=background-color:<?php echo htmlentities($item['Color']); ?>><?php echo htmlentities($item['name']); ?></textarea>
+                                <input value = " " id = "deletesubmit" type=image src=delete.png alt="Submit feedback" formaction="delete.php" >
+                                <input type="submit"  name = "red" value = "red " id = "colorRed"  formaction = "changeColor.php" >
+                                <input type="submit"  name = "yellow" value = "yellow " id = "colorYellow"  formaction = "changeColor.php" >
+                                <input type="submit"  name = "blue" value = "blue" id = "colorBlue"  formaction = "changeColor.php" >
+
                             </div>
 
 
                             <?php if($item['done']): ?>
-                                <input type="checkbox" name = "checkBox" checked="checked" >
+
                             <?php endif; ?>
 
                             <?php if(!$item['done']): ?>
@@ -44,13 +48,8 @@ $items = $itemsQuery->rowCount() ? $itemsQuery : [];
                             <?php endif; ?>
 
                             <input type = "submit" value = "edit" class = "submit" formaction="edit.php" >
-                            <select name="Color">
-                                <option value="red">red</option>
-                                <option value="green">green</option>
-                                <option value="blue">blue</option>
-                                <option value="yellow">yellow</option>
-                            </select>
-                            <input type = "submit" value = "change Color" class = "submit" formaction="changeColor.php" >
+
+
                             <label>Priority is <?php echo htmlentities($item['priority']); ?> </label>
                             <select name="priority">
                                 <?php
@@ -71,8 +70,8 @@ $items = $itemsQuery->rowCount() ? $itemsQuery : [];
 
         <?php endif; ?>
         <form class = "item-add" action="add.php" method = "post">
-            <input type = "text" name = "name" placeholder="Type a new item here." class = "input" autocomplete = "off" requered>
-            <input type = "submit" value = "Add" class = "submit">
+
+            <input type = "submit" id = "addButton" value = "Add" class = "submit">
         </form>
     </div>
     </body>

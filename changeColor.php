@@ -7,9 +7,20 @@
  */
 require_once  'app/init.php';
 print_r($_POST);
-$color = $_POST['Color'];
+
 $id = $_POST['id'];
+
+$color = key($_POST);
+echo $color;
+next($_POST);
+$color = key($_POST);
+
+echo $color;
+next($_POST);
+$color = key($_POST);
+
+echo $color;
+
 $doneQuery = $db->prepare("UPDATE items SET Color = '$color'  WHERE id = $id");
 $doneQuery->execute();
-
-header ('Location: index.php');
+//header ('Location: index.php');
