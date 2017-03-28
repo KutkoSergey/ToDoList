@@ -23,4 +23,4 @@ echo $color;
 
 $doneQuery = $db->prepare("UPDATE items SET Color = '$color'  WHERE id = $id");
 $doneQuery->execute();
-//header ('Location: index.php');
+header ('Location: index.php');

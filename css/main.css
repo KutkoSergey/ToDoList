@@ -1,102 +1,84 @@
 body {
-    background-color: hotpink;
+    background-color: #dff0e6;
 }
 
-.todoItem {
-    width: 300px; /* Ширина поля с кнопкой */
-    border: 2px solid #000; /* Параметры рамки */
-    min-height: 20px; /* Минимальная высота */
-    border-radius: 5px; /* Уголки */;
-}
-textarea{
-    resize: none;
-    border: none; /* Убираем рамку */
-     /* Убираем свечение в Chrome и Safari */
-    width: 274px; /* Ширина поля */
-    vertical-align: top; /* Выравнивание по середине */
-}
-#deletesubmit {
-        width: 20px; /* Ширина кнопки */
-    height: 20px; /* Высота кнопки */
-    opacity:0;
-    background: url(/delete.png);
-
+body,
+input {
+    font: 1em "Open Sans", sans-serif;
+    color:#363639;
 }
 
-#deletesubmit:hover {
+ a{
+     text-decoration: none;
+     border-bottom: 1px dashed #363639;
+ }
 
-    width: 20px; /* Ширина кнопки */
-    height: 20px; /* Высота кнопки */
-    /* Убираем рамку */
-    position: relative;
+ /* list styles */
+
+.list {
+    background-color: #ffffff;
+    margin: 20px auto;
+    max-width: 500px;
+    padding: 20px;
+    border-radius: 2px;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, .1);
+    box-sizing: border-box;
+}
+
+.list .header {
+    font-family: "Shadows Into Lightt Two", cursive;
+    margin: 0 0 10px 0;
+}
+
+/* Items */
+
+.items {
+    margin:0;
+    padding: 0;
+    list-style-type:none;
+}
+
+.items li:hover .doneButton {
+    opacity: 1;
+}
+
+.items .item.done {
+    text-decoration: line-through;
+}
+
+.items li,
+.item-add .input{
+     border:0;
+     border-bottom: 1px dashed #ccc;
+     padding: 15px 0;
+ }
+
+.item-add .input{
+    border:0;
+    border-bottom: 1px dashed #ccc;
+    padding: 15px 0;
+}
+.input:focus {
+    outline:none;
+}
+
+/* Done Button */
+.done-Button {
     display: inline-block;
-    background: url(/delete.png);
-    opacity:1;
+    font-size: 0.8em;
+    background-color: #d9dfe1;
+    color:#363639;
+    padding:3px 6px;
+    opacity: 0.4;
 }
 
-#colorRed {
-
-    width: 50px; /* Ширина кнопки */
-    height: 20px; /* Высота кнопки */
-    /* Убираем рамку */
-
-    opacity:0;
+/* submit button */
+.submit {
+    background-color: #fff;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    width: 100%;
+    margin-top: 10px;
+    box-shadow: 3px 3px 0 #ddd;
 }
 
-#colorRed:hover{
-
-    width: 50px; /* Ширина кнопки */
-    height: 20px; /* Высота кнопки */
-    border: 2px solid #000;
-
-    border-radius: 5px; /* Уголки */;
-    /* Убираем рамку */
-    background-color: red;
-    opacity:1;
-
-}
-#colorYellow{
-
-    width: 50px; /* Ширина кнопки */
-    height: 20px; /* Высота кнопки */
-    /* Убираем рамку */
-
-    opacity:0;
-}
-
-#colorYellow:hover{
-
-    width: 50px; /* Ширина кнопки */
-    height: 20px; /* Высота кнопки */
-    border: 2px solid #000;
-    border-radius: 5px; /* Уголки */;
-    /* Убираем рамку */
-    background-color: yellow;
-    opacity:1;
-}
-
-#colorBlue{
-
-    width: 50px; /* Ширина кнопки */
-    height: 20px; /* Высота кнопки */
-    /* Убираем рамку */
-
-    opacity:0;
-}
-
-#colorBlue:hover{
-
-    width: 50px; /* Ширина кнопки */
-    height: 20px; /* Высота кнопки */
-
-    border: 2px solid #000;
-    border-radius: 5px; /* Уголки */;
-    background-color: blue;
-    opacity:1;
-}
-
-#addButton {
-    width: 340px; /* Ширина кнопки */
-    height: 22px; /* Высота кнопки */
-    background-image: url("/delete.png");
-}

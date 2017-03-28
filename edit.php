@@ -22,4 +22,4 @@ else{
     $doneQuery->execute();
 }
 
-header ('Location: index.php');
+//header ('Location: index.php');
