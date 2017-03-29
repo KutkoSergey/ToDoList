@@ -1,5 +1,5 @@
 body {
-    background-color: #dff0e6;
+    background-color: #eceff0;
 }
 
 body,
@@ -48,14 +48,20 @@ input {
 
 .items li,
 .item-add .input{
-     border:0;
-     border-bottom: 1px dashed #ccc;
-     padding: 15px 0;
- }
+      border:none;
+      border-bottom: 1px dashed #ccc;
+      padding: 15px 0;
+  }
 
 .item-add .input{
-    border:0;
+    border:none;
     border-bottom: 1px dashed #ccc;
+    padding: 15px 0;
+}
+
+.item {
+    border:none;
+
     padding: 15px 0;
 }
 .input:focus {
@@ -82,3 +88,10 @@ input {
     box-shadow: 3px 3px 0 #ddd;
 }
 
+
+.editSubmit {
+   width: 20px;
+    height: 20px;
+    background-image: url("edit.png");
+
+}
